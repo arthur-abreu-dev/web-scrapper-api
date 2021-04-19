@@ -1,13 +1,19 @@
-import {  Controller, Get, Param, Query, Redirect } from '@nestjs/common';
+import {  Controller, Get, Param, Post, Query, Redirect } from '@nestjs/common';
 
 @Controller('scrapper')
 export class ScrapperController {
 
+    path = "chill";
 
-    @Get(':path64')
-    getPage(@Param('path64') path64: string): string{
-        console.log(path64);
-        return 'page';
+    @Get('getPath')
+    getPage(): string{
+        return this.path;
+    }
+
+    @Get('setPath/:path64')
+    setPath(@Param('path64') path64: string): string{
+        this.path = path64;
+        return this.path;
     }
 
     @Get('docs')
