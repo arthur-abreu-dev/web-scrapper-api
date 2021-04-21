@@ -8,10 +8,8 @@ export class ScrapperService {
     constructor(private httpService: HttpService) { }
 
     public async getPageFromUrl(url: string): Promise<any> {
-        //let res: any = await this.httpService.get('https://g1.globo.com/').pipe(map(response => { console.log(response.data); response.data }));
-
-        const response = await this.httpService.get('https://g1.globo.com/').toPromise();
-        console.log(response);
+        console.log(url);
+        const response = await this.httpService.get(url).toPromise();
         return { page: response.data };
     }
 }
